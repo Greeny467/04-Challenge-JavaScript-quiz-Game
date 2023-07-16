@@ -7,3 +7,4 @@ Designed for a schooling project, this application acts as a quiz game on JavaSc
 ![image](https://github.com/Greeny467/04-Challenge-JavaScript-quiz-Game/assets/134465090/79341bbd-a737-4234-b11e-b433e406371d)
 
 ## Link
+https://greeny467.github.io/04-Challenge-JavaScript-quiz-Game/
