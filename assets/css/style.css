@@ -18,7 +18,7 @@ main{
 
 #highscore{
     margin:20px;
-    margin-left:45%;
+    margin-left:40%;
     width:100%
 }
 
@@ -28,10 +28,6 @@ main{
     border:1px solid black;
     display:block;
     font-size:20px;
-}
-
-#gamespace button{
-    justify-self: center;
 }
 
 #gamespace p{
@@ -61,6 +57,8 @@ main{
 
 
 #start{
+    background-color:var(--redcolor);
+    color:white;
     margin:70px;
     margin-left:140px;
     padding:20px;
@@ -70,7 +68,7 @@ main{
 .button:hover{
     background-color:rgb(226, 135, 135)
 }
-.clicked{
+.button:focus{
     border:2px solid rgb(122, 187, 243);
     padding:3px;
 }

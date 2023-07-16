@@ -3,8 +3,6 @@
 var highscoreEl = document.querySelector("#highscore");
 var gamespace = document.querySelector("#gamespace");
 
-console.log(highscore);
-console.log(gamespace);
 
 //set up highscore object
 var highscore = {
@@ -13,13 +11,12 @@ var highscore = {
 };
 
 var lastHighscore = JSON.parse(localStorage.getItem("highscore"))
-console.log(lastHighscore)
 if (lastHighscore == null){
   localStorage.setItem("highscore", JSON.stringify(highscore))
   lastHighscore = localStorage.getItem(JSON.stringify("highscore"))
 }
  
-highscoreEl.textContent = "Hightscore:" + lastHighscore.name + ":" + lastHighscore.score
+highscoreEl.textContent = "Highscore:" + lastHighscore.name + ":" + lastHighscore.score
 
 
 //define page element creation functions
@@ -119,9 +116,24 @@ function stateresult() {
       }, 1000);
     }
 
+    function wait() {
+      var howLong = 1
+      var timerInterval = setInterval(function() {
+        howLong--;
+    
+        if(howLong === 0) {
+          clearInterval(timerInterval);
+          for (i = 1; i != gamespace.childElementCount;){
+            gamespace.lastChild.remove();
+          }
+          stateresult();
+        }
+    
+      }, 1000);
+    }
+
     //set up the page for each different state
     if (state === "0") {
-        console.log("start");
         var startButton = buttonStart();
         gamespace.appendChild(startButton);
      
@@ -136,14 +148,13 @@ function stateresult() {
             
 
             //set timer on button press
-            secondsLeft =15;
+            secondsLeft =20;
             setTime();
             
             stateresult();
         });
     }
     else if (state === "1") {
-        console.log("state 1");
 
         //add all elements
         var question = p();
@@ -186,34 +197,26 @@ function stateresult() {
 
                 //change state
                 gamespace.dataset.state = "2";
-                button.setAttribute("class", "clicked");
 
 
                 //correct or false
+                var answerIs = document.createElement("h3")
+                gamespace.appendChild(answerIs)
                 if (button.textContent === "document.querySelector()") {
-                console.log("correct");
-                score++;
+                  answerIs.textContent = "Correct!"
+                  score++;
                 } 
                 else {
-                console.log("incorrect");
+                  answerIs.textContent = "Incorrect"
+                  secondsLeft--
                 } 
-
-                //remove all new elements for next stage
-                answerButtons.forEach(function(btn) {
-                    btn.remove();
-                });
-                question.remove();
-                stateresult(); 
-
-
-            
-    
+                
+                wait(); 
             });
         });
 
     }
     else if (state == "2") {
-        console.log("state 2");
 
         var question = p();
         gamespace.appendChild(question);
@@ -246,30 +249,24 @@ function stateresult() {
             button.addEventListener("click", function(event) {
                 event.preventDefault();
                 gamespace.dataset.state = "3";
-                button.setAttribute("class", "clicked");
-
+                var answerIs = document.createElement("h3")
+                gamespace.appendChild(answerIs)
                 if (button.textContent === "(querySelected Item).appendChild()") {
-                console.log("correct");
-                score++
+                  answerIs.textContent = "Correct!"
+                  score++;
                 } 
                 else {
-                console.log("incorrect");
+                  answerIs.textContent = "Incorrect"
+                  secondsLeft--
                 } 
-                answerButtons.forEach(function(btn) {
-                    btn.remove();
-                });
-                question.remove()
-                stateresult(); 
-
-
-            
+                
+                wait(); 
     
             });
         });
 
     }
     else if (state == "3") {
-      console.log("state 3");
 
       var question = p();
       gamespace.appendChild(question);
@@ -302,30 +299,25 @@ function stateresult() {
           button.addEventListener("click", function(event) {
               event.preventDefault();
               gamespace.dataset.state = "4";
-              button.setAttribute("class", "clicked");
-
+              var answerIs = document.createElement("h3")
+              gamespace.appendChild(answerIs)
+                
               if (button.textContent === "element.setAttribute()") {
-              console.log("correct");
-              score++;
+                answerIs.textContent = "Correct!"
+                score++;
               } 
               else {
-              console.log("incorrect");
+                answerIs.textContent = "Incorrect"
+                secondsLeft--
               } 
-              answerButtons.forEach(function(btn) {
-                  btn.remove();
-              });
-              question.remove()
-              stateresult(); 
-
-
-          
+                
+              wait(); 
   
           });
       });
 
   }
   else if (state == "4") {
-    console.log("state 4");
 
     var question = p();
     gamespace.appendChild(question);
@@ -358,30 +350,24 @@ function stateresult() {
         button.addEventListener("click", function(event) {
             event.preventDefault();
             gamespace.dataset.state = "5";
-            button.setAttribute("class", "clicked");
 
+            var answerIs = document.createElement("h3")
+            gamespace.appendChild(answerIs)
             if (button.textContent === "element.dataset.state = '_'") {
-            console.log("correct");
-            score++;
+              answerIs.textContent = "Correct!"
+              score++;
             } 
             else {
-            console.log("incorrect");
+              answerIs.textContent = "Incorrect"
+              secondsLeft--
             } 
-            answerButtons.forEach(function(btn) {
-                btn.remove();
-            });
-            question.remove()
-            stateresult(); 
-
-
-        
-
+                
+            wait(); 
         });
     });
 
   }
   else if (state == "5") {
-    console.log("state 5");
 
     var question = p();
     gamespace.appendChild(question);
@@ -414,20 +400,19 @@ function stateresult() {
         button.addEventListener("click", function(event) {
             event.preventDefault();
             gamespace.dataset.state = "6";
-            button.setAttribute("class", "clicked");
 
+            var answerIs = document.createElement("h3")
+            gamespace.appendChild(answerIs)
             if (button.textContent === "element.dataset.variable") {
-            console.log("correct");
-            score++;
+              answerIs.textContent = "Correct!"
+              score++;
             } 
             else {
-            console.log("incorrect");
+              answerIs.textContent = "Incorrect"
+              secondsLeft--
             } 
-            answerButtons.forEach(function(btn) {
-                btn.remove();
-            });
-            question.remove()
-            stateresult(); 
+                
+            wait(); 
 
 
         
@@ -438,7 +423,6 @@ function stateresult() {
   }
 
   else if (state == "6") {
-    console.log("6")
     
     //remove all elements on gamespace
     for (i = 0; i != gamespace.childElementCount;){
@@ -469,16 +453,17 @@ function stateresult() {
 
       //watch for keydown events. When one happens, place the key value into an empty array spot. 
       document.addEventListener("keydown", function(event){
-        console.log(event.key)
-        if (nameArray[0] == "_"){
-          console.log("yes")
-          nameArray[0] = event.key
-        }
-        else if(nameArray[1] == "_"){
-          nameArray[1] = event.key
-        }
-        else if (nameArray[2] == "_"){
-          nameArray[2] = event.key
+        var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        if(letters.includes(event.key)){
+          if (nameArray[0] == "_"){
+            nameArray[0] = event.key
+          }
+          else if (nameArray[1] == "_"){
+            nameArray[1] = event.key
+          }
+          else if (nameArray[2] == "_"){
+            nameArray[2] = event.key
+          }
         }
         
         //change the display of the fake input bar whenever a letter is added
@@ -532,7 +517,7 @@ function stateresult() {
             
 
             //set timer on button press
-            secondsLeft =15;
+            secondsLeft =20;
             setTime();
             
             stateresult();
@@ -563,7 +548,7 @@ function stateresult() {
             for (i = 0; i != gamespace.childElementCount;){
               gamespace.firstChild.remove();
             }
-            secondsLeft =15;
+            secondsLeft =20;
             setTime();
             
             
