@@ -8,3 +8,6 @@ Designed for a schooling project, this application acts as a quiz game on JavaSc
 
 ## Link
 https://greeny467.github.io/04-Challenge-JavaScript-quiz-Game/
+
+## For the grading team
+I utilized different snippets of code from stack overflow and other websites when looking for solutions to my problems, as well as some help in understanding my errors and minor problem solving from chat gpt. All of these would be found within the java script file. 
