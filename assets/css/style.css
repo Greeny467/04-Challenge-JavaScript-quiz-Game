@@ -1,0 +1,76 @@
+
+:root{
+    --redcolor:rgb(170, 76, 76);
+}
+
+header{
+    color:var(--redcolor);
+    text-align:center;
+    font-size: 30px;
+}
+
+main{
+    color:black;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+#highscore{
+    margin:20px;
+    margin-left:45%;
+    width:100%
+}
+
+#gamespace{
+    width:400px;
+    height:400px;
+    border:1px solid black;
+    display:block;
+    font-size:20px;
+}
+
+#gamespace button{
+    justify-self: center;
+}
+
+#gamespace p{
+    margin:20px;
+    font-weight:bold;
+}
+#gamespace h1{
+    text-align:center;
+    margin:20px;
+}
+#gamespace h3{
+    text-align:center;
+    margin:20px;
+}
+
+.button{
+    margin-left:20px;
+    margin-right:200px;
+    margin-bottom:20px;
+    padding:5px;
+    font-size: 15px;
+    background-color:var(--redcolor);
+    color:white;
+    border:0px;
+    border-radius:5px;
+}
+
+
+#start{
+    margin:70px;
+    margin-left:140px;
+    padding:20px;
+    font-size:40px;
+}
+
+.button:hover{
+    background-color:rgb(226, 135, 135)
+}
+.clicked{
+    border:2px solid rgb(122, 187, 243);
+    padding:3px;
+}
